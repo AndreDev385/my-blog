@@ -1,23 +1,18 @@
-<header>
-	<nav class="container-fluid">
-		<ul>
-			<li>
-				<h2>Blog</h2>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<a href="/">Home</a>
-			</li>
-			<li>
-				<button class="contrast switcher" aria-label="Turn off dark mode"><i></i></button>
-			</li>
-		</ul>
-	</nav>
-</header>
+<script lang="ts">
+	import { Navbar, NavBrand, NavHamburger, DarkMode, NavUl, NavLi } from 'flowbite-svelte';
 
-<style>
-	h2 {
-		margin-bottom: 0;
-	}
-</style>
+	let btnClass =
+		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-xl p-2';
+</script>
+
+<Navbar let:hidden let:toggle class="bg-slate-200">
+	<NavBrand>
+		<DarkMode {btnClass} />
+		<span class="self-center ml-2 whitespace-nowrap text-xl font-semibold dark:text-white"> Blog </span>
+	</NavBrand>
+	<NavHamburger on:click={toggle} />
+	<NavUl {hidden}>
+		<NavLi href="/">Home</NavLi>
+		<NavLi href="/posts">Posts</NavLi>
+	</NavUl>
+</Navbar>
